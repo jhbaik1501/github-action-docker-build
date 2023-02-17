@@ -45,3 +45,16 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: baikjonghyun/tamago:lastest
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_IP }}
+          username: ${{ secrets.REMOTE_SSH_ID }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          port: ${{ secrets.REMOTE_SSH_PORT }}
+          script: |
+            cd /home/ubuntu/dockerfile/backend
+            chmod +x backend_install.sh || exit 1
+            chmod +x delete_not_use_image_file.sh || exit 1
+            sudo ./backend_install.sh || exit 1
+            sudo ./delete_not_use_image_file.sh || exit 1
