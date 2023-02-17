@@ -11,6 +11,13 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v3
+      - 
+        name: make application-secret.yml
+        run: |
+          cd ./dockerfile/backend/
+          touch ./application-secret.yml
+          echo "${{ secrets.SECRET_YML }}" > ./application-secret.yml
+        shell: bash
       -
         name: Docker meta
         id: docker_meta
