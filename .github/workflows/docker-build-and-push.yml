@@ -53,6 +53,10 @@ jobs:
           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
+            echo -e "\
+             +------------------------------------+
+             |                run                 |
+             +------------------------------------+"
             cd /home/ubuntu/dockerfile/backend
             chmod +x backend_install.sh || exit 1
             chmod +x delete_not_use_image_file.sh || exit 1
