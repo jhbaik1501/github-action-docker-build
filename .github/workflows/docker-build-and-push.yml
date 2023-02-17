@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./dockerfile/backend/Dockerfile
-          file: ./dockerfile/backend/Dockerfile
+          file: .
           platforms: linux/amd64
           push: true
           tags: baikjonghyun/tamago:lastest
